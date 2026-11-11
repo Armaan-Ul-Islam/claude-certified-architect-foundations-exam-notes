@@ -1,0 +1,55 @@
+filters:
+  and:
+    - file.ext == "md"
+properties:
+  domain:
+    displayName: Domain
+  domains:
+    displayName: Primary domains
+  tasks:
+    displayName: Tasks
+  confident:
+    displayName: Confident
+  weight:
+    displayName: Exam weight (%)
+views:
+  - type: table
+    name: Concepts by domain
+    filters:
+      and:
+        - type == "concept"
+    groupBy:
+      property: domain
+      direction: ASC
+    order:
+      - file.name
+      - tasks
+      - confident
+    summaries:
+      confident: Checked
+  - type: table
+    name: Not confident yet
+    filters:
+      and:
+        - type == "concept"
+        - confident != true
+    order:
+      - file.name
+      - domain
+      - tasks
+  - type: table
+    name: Domains
+    filters:
+      and:
+        - type == "domain"
+    order:
+      - file.name
+      - weight
+  - type: table
+    name: Scenarios
+    filters:
+      and:
+        - type == "scenario"
+    order:
+      - file.name
+      - domains

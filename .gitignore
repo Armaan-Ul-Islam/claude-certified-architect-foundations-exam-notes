@@ -1,0 +1,12 @@
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/themes/
+.trash/
+
+.claude/settings.local.json
+CLAUDE.local.md
+
+.DS_Store
+._*
+Thumbs.db
+desktop.ini

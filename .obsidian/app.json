@@ -1,0 +1,10 @@
+{
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "assets",
+  "showInlineTitle": false,
+  "userIgnoreFilters": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.md"
+  ]
+}
