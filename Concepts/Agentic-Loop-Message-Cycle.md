@@ -31,6 +31,8 @@ confident: false
   - `tool_use`: run the tools, then call the API again.
   - `end_turn`: done; show the text to the person.
   - `max_tokens`: the reply was cut off by the length limit.
+    - `max_tokens` is **not a length hint**. Claude is not told to fit its answer inside it; it writes the reply as it normally would, and the API stops it at the cap, often mid-sentence. ^max-tokens-cutoff
+    - Want a shorter answer? Ask for it in the prompt. Want the full answer? Raise `max_tokens`.
 - **Roles:** `assistant` is Claude. `user` is everything sent back to Claude, including tool results that no person wrote.
 - **`system` is a top-level field**, not a message.
 
@@ -424,5 +426,6 @@ Request 4 sent all 7 messages, but response 4 holds only this one new message. I
 - [[Agentic-Loop-Anti-Patterns|Agentic Loop Anti-Patterns]]
 - [[User-vs-Assistant-Messages|User vs Assistant Messages in Tool Calls]]
 - [[Agent-SDK-vs-Client-SDK|Agent SDK vs Client SDK]]
+- [[Claude-API-Anthropic-Client-SDK|Claude API: Anthropic Client SDK]]
 - [[Tool-Choice|Tool Choice]]
 - [[Claude-Technologies-Reference#Claude API Messages API|Messages API fields (reference)]]

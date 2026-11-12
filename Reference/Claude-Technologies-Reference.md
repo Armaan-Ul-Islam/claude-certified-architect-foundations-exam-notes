@@ -32,7 +32,7 @@ Diagrams of how the Claude API, Client SDK, Agent SDK, Claude Code and MCP serve
 | Field | Meaning |
 |---|---|
 | `model` | Which Claude model |
-| ★ `max_tokens` | Cap on the reply's length. Hitting it gives `stop_reason: "max_tokens"` (reply cut off) |
+| ★ `max_tokens` | Cap on the reply's length. Hitting it gives `stop_reason: "max_tokens"` (reply cut off). Not a length hint to Claude (see [[Agentic-Loop-Message-Cycle#^max-tokens-cutoff\|why]]) |
 | ★ `system` | The system prompt. A top-level field, not a message |
 | `messages` | The full history, alternating `user` / `assistant`, resent on every call |
 | ★ `tools` | Every tool Claude may call: `name`, `description`, `input_schema`, optional `strict: true` |
@@ -104,7 +104,7 @@ client.messages.create(model="claude-opus-5-5", max_tokens=1024, messages=[…])
 | `client.messages.batches.retrieve(batch_id)` | Polls it: `.processing_status == "ended"` when done |
 | `client.messages.batches.results(batch_id)` | Reads the results. Match each one by `custom_id` |
 
-See also: [[Agent-SDK-vs-Client-SDK|Agent SDK vs Client SDK]].
+See also: [[Agent-SDK-vs-Client-SDK|Agent SDK vs Client SDK]], and [[Claude-API-Anthropic-Client-SDK|Claude API: Anthropic Client SDK]] for a first request and reading the reply.
 
 <br>
 

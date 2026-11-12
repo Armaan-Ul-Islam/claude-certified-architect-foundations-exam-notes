@@ -16,7 +16,7 @@ aliases:
 | 7   | Introduction to Model Context Protocol (MCP) | ~1 hr     | 10       |
 
 API:
-- Core: 2
+- Core: 2 (notes: [[Claude-API-Anthropic-Client-SDK|Claude API: Anthropic Client SDK]])
 - Vendor : 3, 6
 - Includes: 7
 Code:

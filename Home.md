@@ -36,6 +36,7 @@ The exam shows 4 of these 6 at random. [[Exam-Scenarios|How to tell them apart]]
 ## Reference
 - [[Claude-Technologies-Reference|Claude Technologies Reference]]
 - [[Agentic-Loop-Message-Cycle|Agentic Loop: The Message Cycle]]
+- [[Claude-API-Anthropic-Client-SDK|Claude API: Anthropic Client SDK]]: calling it from Python
 
 ## Resources
 - [[CCA-F-Syllabus|CCA-F Syllabus]]: exam guide, courses, roadmap and mock exams

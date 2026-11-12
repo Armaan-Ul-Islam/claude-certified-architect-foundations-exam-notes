@@ -36,4 +36,5 @@ The **Client SDK** is the library for calling the Claude API, which is what the 
 - [[Agentic-Loop-Message-Cycle|Agentic Loop: The Message Cycle]]
 - [[User-vs-Assistant-Messages|User vs Assistant Messages in Tool Calls]]
 - [[Claude-Technologies-Reference#Client SDK|Client SDK (reference)]]
+- [[Claude-API-Anthropic-Client-SDK|Claude API: Anthropic Client SDK]]: the Client SDK in Python code
 - [[Claude-Technologies-Reference#Agent SDK|Agent SDK (reference)]]

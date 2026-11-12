@@ -25,7 +25,7 @@ A **message batch** is a set of normal Messages API requests, sent in one call. 
   "params": { "model": "…", "max_tokens": 1024, "tools": […], "tool_choice": {…}, "messages": […] }
 }
 ```
-`params` is exactly what you'd send to `messages.create`. `custom_id` is your own label.
+`params` is exactly what you'd send to `messages.create` ([[Claude-API-Anthropic-Client-SDK#Making Your First Request|example]]). `custom_id` is your own label.
 
 
 ## How it runs
