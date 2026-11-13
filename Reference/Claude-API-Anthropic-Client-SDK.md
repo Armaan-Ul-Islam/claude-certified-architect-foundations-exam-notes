@@ -16,6 +16,25 @@ Calling the Claude API from Python with the `anthropic` package, the Client SDK.
 
 <br>
 
+## Accessing the API
+---
+
+![Your app sends a request to your server, whose Anthropic SDK calls the Anthropic API, and the response comes back the same way](../assets/Accessing-the-API-Overview.png)
+
+![Request fields: API key, model, messages, max tokens](../assets/Accessing-the-API-Request-Fields.png)
+
+![Tokenization splits the input into tokens](../assets/Accessing-the-API-Tokenization.png)
+
+![Contextualization relates each token's embedding to the others](../assets/Accessing-the-API-Contextualization.png)
+
+![Generation: the output layer gives each possible next token a probability](../assets/Accessing-the-API-Generation.png)
+
+![Generation stops at max tokens, a stop sequence or an end-of-sequence token](../assets/Accessing-the-API-Stop-Conditions.png)
+
+![Response fields: message, usage, stop reason](../assets/Accessing-the-API-Response-Fields.png)
+
+<br>
+
 ## Setup
 ---
 
@@ -131,6 +150,126 @@ while True:
     add_assistant_message(messages, answer)  # Add generated text to the list of messages
     print(answer)  # Print the generated text
 ```
+
+<br>
+
+## System Prompts
+---
+
+`system` is a top-level field, not a message ([[Claude-Technologies-Reference#Request fields|request fields]]). The `chat` helper with a system prompt:
+
+```python
+def chat(messages):
+    system = """
+    You are a patient math tutor.
+    Do not directly answer a student's questions.
+    Guide them to a solution step by step.
+    """
+    message = client.messages.create(
+        model=model,
+        max_tokens=1000,
+        messages=messages,
+        system=system,
+    )
+    return message.content[0].text
+```
+
+<br>
+
+## Temperature
+---
+
+`temperature` (0 to 1) changes how likely each next token is to be picked: low gives predictable output, high gives varied output.
+
+Remember that temperature doesn't guarantee different outputs - it just changes the probability of getting them.
+
+![Claude gives each possible next token a selection probability](../assets/Temperature-Next-Token-Probabilities.png)
+
+![Low temperature gives more deterministic output, high temperature more random output](../assets/Temperature-Low-vs-High.png)
+
+![Temperature ranges: low for facts, code and extraction; medium for summaries and teaching; high for brainstorming and creative writing](../assets/Temperature-Ranges.png)
+
+Set it as a request field:
+
+```python
+params = {
+    "model": model,
+    "max_tokens": 1000,
+    "messages": messages,
+    "temperature": temperature
+}
+```
+
+Newer models, including `claude-opus-5-5` above, reject `temperature` with a 400 error. It still works on older models such as Claude Sonnet 4.6 with an older SDK.
+
+<br>
+
+## Response Streaming
+---
+
+Streaming sends the reply in pieces as it's generated, so the user sees text right away.
+
+![With streaming, Claude sends the reply as a series of events within a single request](../assets/Response-Streaming-Events.png)
+
+```python
+with client.messages.stream(
+    model=model,
+    max_tokens=1000,
+    messages=messages
+) as stream:
+    for text in stream.text_stream:
+        print(text, end="")
+        
+    final_message = stream.get_final_message()  # Get the complete message for database storage
+```
+
+<br>
+
+## Stop Sequences
+---
+
+`stop_sequences` ends the reply as soon as Claude writes one of the listed strings. The response then has `stop_reason: "stop_sequence"`.
+
+![Prefilling the assistant message with a JSON code fence and stopping at the closing fence returns only the JSON](../assets/Stop-Sequences-JSON-Prefill.png)
+
+The slide also prefills the assistant message to start the JSON. Current models, including `claude-opus-5-5`, reject a prefill with a 400 error, so for JSON use tool use with a schema ([[JSON-Schema-for-Structured-Extraction|JSON Schema for Structured Extraction]]).
+
+<br>
+
+## Prompt Evaluation
+---
+
+![Prompt evaluation: draft a prompt, create an eval dataset, feed it through Claude, then score each response with a grader](../assets/Prompt-Evaluation-Workflow.png)
+
+![A code grader checks format and valid syntax; a model grader checks task following](../assets/Prompt-Evaluation-Code-vs-Model-Grader.png)
+
+A model grader. It uses the prefill and stop sequence from [[#Stop Sequences|Stop Sequences]], so it needs an older model and a `chat` helper that takes `stop_sequences`.
+
+````python
+import json
+
+def grade_by_model(test_case, output):
+    # Create evaluation prompt
+    eval_prompt = """
+    You are an expert code reviewer. Evaluate this AI-generated solution.
+
+    Task: {task}
+    Solution: {solution}
+
+    Provide your evaluation as a structured JSON object with:
+    - "strengths": An array of 1-3 key strengths
+    - "weaknesses": An array of 1-3 key areas for improvement
+    - "reasoning": A concise explanation of your assessment
+    - "score": A number between 1-10
+    """.format(task=test_case["task"], solution=output)
+
+    messages = []
+    add_user_message(messages, eval_prompt)
+    add_assistant_message(messages, "```json")
+
+    eval_text = chat(messages, stop_sequences=["```"])
+    return json.loads(eval_text)
+````
 
 <br>
 
