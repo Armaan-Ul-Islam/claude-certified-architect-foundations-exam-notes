@@ -273,6 +273,173 @@ def grade_by_model(test_case, output):
 
 <br>
 
+## Prompt Engineering
+---
+
+Writing prompts that get the output you want on the first try. On the exam, this is [[Domain-4-Prompt-Engineering|Domain 4]] (20%).
+
+### Be clear and direct
+- Open with one plain sentence that states the task.
+- Give an instruction, not a question, and start it with an action verb: "Write", "Create", "Identify".
+
+![Be clear and direct: simple language, the task stated explicitly, and instructions with action verbs instead of questions](../assets/Prompt-Engineering-Clear-and-Direct.png)
+
+### Be specific
+Add a list of guidelines under the task. They come in two kinds:
+- **Qualities** the output should have, such as a length limit or what it must include.
+- **Steps** Claude should follow to get there, such as brainstorming options and then picking one.
+
+Explicit criteria like these are what [[Domain-4-Prompt-Engineering#4.1 Design prompts with explicit criteria to improve precision and reduce false positives|Task 4.1]] tests.
+
+![Be specific: the same story prompt, improved with a numbered list of guidelines](../assets/Prompt-Engineering-Be-Specific.png)
+
+![Guideline types: list qualities the output should have, or give steps the model should follow](../assets/Prompt-Engineering-Guideline-Types.png)
+
+### Structure with XML tags
+Wrap each piece of content in its own tag, such as `<my_code>` and `<docs>`. Claude can then tell your instruction apart from the material it works on, and one piece of material from another. The tag names are up to you: pick ones that describe the content.
+
+![Providing structure: the same debugging prompt, with the code and the docs each wrapped in their own XML tag](../assets/Prompt-Engineering-XML-Tags.png)
+
+<br>
+
+## Tool Use with Claude
+---
+
+Claude never runs your tools. It asks for one, your code runs it, and you send the result back ([[Agentic-Loop-Message-Cycle#One tool call, end to end|one tool call, end to end]]). The course splits this into five steps: write a tool function, write its JSON schema, call Claude with the schema, run the tool, then add the result and call Claude again.
+
+### Tool functions
+A plain Python function that your code runs when Claude asks for it. Give it descriptive argument names, validate its inputs, and raise clear errors: the error goes back to Claude, which can then try again.
+
+![Step 1, the tool function: a plain Python function with descriptive arguments that validates its inputs and raises meaningful errors](../assets/Tool-Use-Tool-Function.png)
+
+### Tool schemas
+The schema is how Claude learns the tool exists. `name` and `description` tell it when to use the tool, and `input_schema` describes the arguments as a JSON Schema. Clear, detailed descriptions like the ones below are what [[Domain-2-Tool-Design-and-MCP#2.1 Design effective tool interfaces with clear descriptions and boundaries|Task 2.1]] tests.
+
+![Step 2, the JSON schema: name and description say when to use the tool, input_schema describes its arguments](../assets/Tool-Use-JSON-Schema.png)
+
+```python
+add_duration_to_datetime_schema = {
+    "name": "add_duration_to_datetime",
+    "description": "Adds a specified duration to a datetime string and returns the resulting datetime in a detailed format. This tool converts an input datetime string to a Python datetime object, adds the specified duration in the requested unit, and returns a formatted string of the resulting datetime. It handles various time units including seconds, minutes, hours, days, weeks, months, and years, with special handling for month and year calculations to account for varying month lengths and leap years. The output is always returned in a detailed format that includes the day of the week, month name, day, year, and time with AM/PM indicator (e.g., 'Thursday, April 03, 2025 10:30:00 AM').",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "datetime_str": {
+                "type": "string",
+                "description": "The input datetime string to which the duration will be added. This should be formatted according to the input_format parameter.",
+            },
+            "duration": {
+                "type": "number",
+                "description": "The amount of time to add to the datetime. Can be positive (for future dates) or negative (for past dates). Defaults to 0.",
+            },
+            "unit": {
+                "type": "string",
+                "description": "The unit of time for the duration. Must be one of: 'seconds', 'minutes', 'hours', 'days', 'weeks', 'months', or 'years'. Defaults to 'days'.",
+            },
+            "input_format": {
+                "type": "string",
+                "description": "The format string for parsing the input datetime_str, using Python's strptime format codes. For example, '%Y-%m-%d' for ISO format dates like '2025-04-03'. Defaults to '%Y-%m-%d'.",
+            },
+        },
+        "required": ["datetime_str"],
+    },
+}
+
+set_reminder_schema = {
+    "name": "set_reminder",
+    "description": "Creates a timed reminder that will notify the user at the specified time with the provided content. This tool schedules a notification to be delivered to the user at the exact timestamp provided. It should be used when a user wants to be reminded about something specific at a future point in time. The reminder system will store the content and timestamp, then trigger a notification through the user's preferred notification channels (mobile alerts, email, etc.) when the specified time arrives. Reminders are persisted even if the application is closed or the device is restarted. Users can rely on this function for important time-sensitive notifications such as meetings, tasks, medication schedules, or any other time-bound activities.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "content": {
+                "type": "string",
+                "description": "The message text that will be displayed in the reminder notification. This should contain the specific information the user wants to be reminded about, such as 'Take medication', 'Join video call with team', or 'Pay utility bills'.",
+            },
+            "timestamp": {
+                "type": "string",
+                "description": "The exact date and time when the reminder should be triggered, formatted as an ISO 8601 timestamp (YYYY-MM-DDTHH:MM:SS) or a Unix timestamp. The system handles all timezone processing internally, ensuring reminders are triggered at the correct time regardless of where the user is located. Users can simply specify the desired time without worrying about timezone configurations.",
+            },
+        },
+        "required": ["content", "timestamp"],
+    },
+}
+```
+
+Wrapping a schema in the SDK's `ToolParam` type lets your editor catch a missing or misspelled key:
+
+```python
+from anthropic.types import ToolParam
+
+get_current_datetime_schema = ToolParam({
+    "name": "get_current_datetime",
+    "description": "Returns the current date and time formatted according to the specified format",
+    # ... rest of schema
+})
+```
+
+### Handling message blocks
+Pass the schemas in `tools`. When Claude wants a tool, the reply's `content` holds several blocks, such as a `text` block and a `tool_use` block, and `stop_reason` is `"tool_use"`. Add the whole `content` list to the history, not just its text.
+
+![Step 3, a multi-block message: the assistant's content list holds a text block and a tool_use block](../assets/Tool-Use-Multi-Block-Message.png)
+
+```python
+response = client.messages.create(
+    model=model,
+    max_tokens=1000,
+    messages=messages,
+    tools=[get_current_datetime_schema],
+)
+messages.append({"role": "assistant", "content": response.content})
+```
+
+### Sending tool results
+Run the tool, then send its output back in a `user` message as a `tool_result` block ([[User-vs-Assistant-Messages|why a user message]]):
+- `tool_use_id`: the `id` of the `tool_use` block it answers.
+- `content`: the tool's output, as a string.
+- `is_error`: `True` if the tool failed.
+
+![Step 4, the tool result block: it goes in a user message; tool_use_id matches the tool_use block, content is the output as a string, is_error flags a failure](../assets/Tool-Use-Tool-Result-Block.png)
+
+If Claude asks for several tools at once, send all the results together in one user message, matched by ID in any order ([[Agentic-Loop-Message-Cycle#Rules|rules]]).
+
+![Two tool_use blocks in one assistant message, answered by two tool_result blocks in one user message, matched by ID](../assets/Tool-Use-Multiple-Tool-Results.png)
+
+```python
+tool_use_block = response.content[1]  # By order: assumes exactly one block comes first
+tool_use_block = next(block for block in response.content if block.type == "tool_use")  # By type
+
+messages.append({
+    "role": "user",
+    "content": [{
+        "type": "tool_result",
+        "tool_use_id": tool_use_block.id,
+        "content": "15:04:22",
+        "is_error": False
+    }]
+})
+```
+
+Then call Claude again with the same `tools` and the whole history. Repeat while `stop_reason` is `"tool_use"` ([[Agentic-Loop-Message-Cycle|agentic loop]]).
+
+![Step 5, calling Claude again: the request sends the tool schemas plus the whole history, the user's question, the assistant's text and tool_use blocks, and the user's tool_result](../assets/Tool-Use-Full-Request.png)
+
+The history at that point, as printed:
+
+```python
+[{'role': 'user', 'content': 'What is the exact time, formatted as HH:MM:SS?'},
+ {'role': 'assistant',
+  'content': [TextBlock(citations=None, text="I'll retrieve the current time for you formatted as HH:MM:SS.", type='text'),
+              ToolUseBlock(id='toolu_01BEbi7q7qzvwP8zSMBHp3BD', input={'date_format': '%H:%M:%S'},
+                           name='get_current_datetime', type='tool_use')]},
+ {'role': 'user',
+  'content': [{'type': 'tool_result',
+               'tool_use_id': 'toolu_01BEbi7q7qzvwP8zSMBHp3BD',
+               'content': '15:04:22',
+               'is_error': False}]}]
+```
+
+<br>
+
 ## Related
 ---
 

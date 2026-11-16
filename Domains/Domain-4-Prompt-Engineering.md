@@ -11,7 +11,7 @@ aliases:
 **20% of the exam.** A primary domain in [[Scenario-5-Claude-Code-in-CI|Scenario 5]], [[Scenario-6-Structured-Extraction|Scenario 6]].
 
 ## 4.1 Design prompts with explicit criteria to improve precision and reduce false positives
-- *No notes yet.*
+- [[Claude-API-Anthropic-Client-SDK#Prompt Engineering|Prompt Engineering (Client SDK note)]]: clear, direct and specific prompts
 
 ## 4.2 Apply few-shot prompting to improve output consistency and quality
 - *No notes yet.*

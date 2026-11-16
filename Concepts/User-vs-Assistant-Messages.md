@@ -55,3 +55,4 @@ A conversation has only two roles. **Assistant** is whatever Claude says. **User
 - [[Agentic-Loop-Message-Cycle|Agentic Loop: The Message Cycle]]
 - [[Agentic-Loop-Anti-Patterns|Agentic Loop Anti-Patterns]]
 - [[Agent-SDK-vs-Client-SDK|Agent SDK vs Client SDK]]
+- [[Claude-API-Anthropic-Client-SDK#Sending tool results|Sending tool results in Python (Client SDK note)]]

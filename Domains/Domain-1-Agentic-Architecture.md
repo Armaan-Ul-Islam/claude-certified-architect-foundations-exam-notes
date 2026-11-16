@@ -14,6 +14,7 @@ aliases:
 - [[Agentic-Loop-Message-Cycle|Agentic Loop: The Message Cycle]]
 - [[Agentic-Loop-Anti-Patterns|Agentic Loop Anti-Patterns]]
 - [[User-vs-Assistant-Messages|User vs Assistant Messages in Tool Calls]]
+- [[Claude-API-Anthropic-Client-SDK#Tool Use with Claude|Tool Use with Claude (Client SDK note)]]: one tool call in Python code
 
 ## 1.2 Orchestrate multi-agent systems with coordinator-subagent patterns
 - [[Task-Decomposition|Decomposition]]
