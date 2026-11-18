@@ -19,6 +19,8 @@ Calling the Claude API from Python with the `anthropic` package, the Client SDK.
 ## Accessing the API
 ---
 
+What happens inside the model at each stage, step by step and with interactive diagrams: [[Inference-Next-Token-Prediction|Inference: How Claude Predicts the Next Token]].
+
 ![Your app sends a request to your server, whose Anthropic SDK calls the Anthropic API, and the response comes back the same way](../assets/Accessing-the-API-Overview.png)
 
 ![Request fields: API key, model, messages, max tokens](../assets/Accessing-the-API-Request-Fields.png)
@@ -179,7 +181,7 @@ def chat(messages):
 ## Temperature
 ---
 
-`temperature` (0 to 1) changes how likely each next token is to be picked: low gives predictable output, high gives varied output.
+`temperature` (0 to 1) changes how likely each next token is to be picked: low gives predictable output, high gives varied output ([[Inference-Next-Token-Prediction#6. Pick one|how the pick works]]).
 
 Remember that temperature doesn't guarantee different outputs - it just changes the probability of getting them.
 
@@ -446,4 +448,5 @@ The history at that point, as printed:
 - [[Agent-SDK-vs-Client-SDK|Agent SDK vs Client SDK]]
 - [[Claude-Technologies-Reference#Client SDK|Client SDK (reference)]]
 - [[Agentic-Loop-Message-Cycle|Agentic Loop: The Message Cycle]]
+- [[Inference-Next-Token-Prediction|Inference: How Claude Predicts the Next Token]]: what happens inside the model
 - [[Courses-by-Anthropic|Courses by Anthropic]]: course 2, Building with the Claude API

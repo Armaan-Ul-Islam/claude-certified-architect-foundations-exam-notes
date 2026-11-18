@@ -39,3 +39,6 @@ Every exam tip in the vault on one page. Each tip is embedded from its note, so 
 
 **[[Agent-SDK-vs-Client-SDK|Agent SDK vs Client SDK]]**
 ![[Agent-SDK-vs-Client-SDK#^exam-tip]]
+
+**[[Inference-Next-Token-Prediction|Inference: How Claude Predicts the Next Token]]**
+![[Inference-Next-Token-Prediction#^exam-tip]]

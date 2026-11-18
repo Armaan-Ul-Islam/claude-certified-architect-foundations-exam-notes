@@ -13,6 +13,7 @@ aliases:
 ## 5.1 Manage conversation context to preserve critical information across long interactions
 - [[Agentic-Loop-Message-Cycle|Agentic Loop: The Message Cycle]]
 - [[Claude-Technologies-Reference#Claude Code configuration|/compact (reference)]]
+- [[Inference-Next-Token-Prediction#^attention-dilution|Why long inputs get uneven attention (background)]]
 
 ## 5.2 Design effective escalation and ambiguity resolution patterns
 - *No notes yet.*
