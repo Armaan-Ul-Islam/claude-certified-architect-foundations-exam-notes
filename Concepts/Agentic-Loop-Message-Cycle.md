@@ -426,6 +426,6 @@ Request 4 sent all 7 messages, but response 4 holds only this one new message. I
 - [[Agentic-Loop-Anti-Patterns|Agentic Loop Anti-Patterns]]
 - [[User-vs-Assistant-Messages|User vs Assistant Messages in Tool Calls]]
 - [[Agent-SDK-vs-Client-SDK|Agent SDK vs Client SDK]]
-- [[Claude-API-Anthropic-Client-SDK|Claude API: Anthropic Client SDK]]
+- [[Claude-API-Tool-Use|Tool Use with Claude (Claude API course)]]: the loop in Python code
 - [[Tool-Choice|Tool Choice]]
 - [[Claude-Technologies-Reference#Claude API Messages API|Messages API fields (reference)]]

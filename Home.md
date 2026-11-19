@@ -36,7 +36,7 @@ The exam shows 4 of these 6 at random. [[Exam-Scenarios|How to tell them apart]]
 ## Reference
 - [[Claude-Technologies-Reference|Claude Technologies Reference]]
 - [[Agentic-Loop-Message-Cycle|Agentic Loop: The Message Cycle]]
-- [[Claude-API-Anthropic-Client-SDK|Claude API: Anthropic Client SDK]]: calling it from Python
+- [[Claude-API-Anthropic-Client-SDK|Claude API: Anthropic Client SDK]]: calling it from Python, one note per course chapter
 - [[Inference-Next-Token-Prediction|Inference: How Claude Predicts the Next Token]]: what happens inside the model, with interactive diagrams
 
 ## Resources

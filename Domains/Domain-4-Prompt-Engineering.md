@@ -11,7 +11,7 @@ aliases:
 **20% of the exam.** A primary domain in [[Scenario-5-Claude-Code-in-CI|Scenario 5]], [[Scenario-6-Structured-Extraction|Scenario 6]].
 
 ## 4.1 Design prompts with explicit criteria to improve precision and reduce false positives
-- [[Claude-API-Anthropic-Client-SDK#Prompt Engineering|Prompt Engineering (Client SDK note)]]: clear, direct and specific prompts
+- [[Claude-API-Prompt-Engineering|Prompt Engineering Techniques (Claude API course)]]: clear, direct and specific prompts
 
 ## 4.2 Apply few-shot prompting to improve output consistency and quality
 - *No notes yet.*
@@ -27,6 +27,7 @@ aliases:
 ## 4.5 Design efficient batch processing strategies
 - [[Message-Batches-API|Message Batches API]]
 - [[Claude-Technologies-Reference#Message Batches API ★|Message Batches API facts (reference)]]
+- [[Claude-API-RAG#Chunking|Chunking (Claude API course)]]: splitting a document too big for the context
 
 ## 4.6 Design multi-instance and multi-pass review architectures
 - *No notes yet.*

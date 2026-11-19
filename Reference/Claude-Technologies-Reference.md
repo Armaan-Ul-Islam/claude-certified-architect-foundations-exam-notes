@@ -104,7 +104,7 @@ client.messages.create(model="claude-opus-5-5", max_tokens=1024, messages=[…])
 | `client.messages.batches.retrieve(batch_id)` | Polls it: `.processing_status == "ended"` when done |
 | `client.messages.batches.results(batch_id)` | Reads the results. Match each one by `custom_id` |
 
-See also: [[Agent-SDK-vs-Client-SDK|Agent SDK vs Client SDK]], and [[Claude-API-Anthropic-Client-SDK|Claude API: Anthropic Client SDK]] for a first request and reading the reply.
+See also: [[Agent-SDK-vs-Client-SDK|Agent SDK vs Client SDK]], and [[Claude-API-Accessing-Claude|Accessing Claude with the API]] for a first request and reading the reply.
 
 <br>
 

@@ -25,7 +25,7 @@ A **message batch** is a set of normal Messages API requests, sent in one call. 
   "params": { "model": "…", "max_tokens": 1024, "tools": […], "tool_choice": {…}, "messages": […] }
 }
 ```
-`params` is exactly what you'd send to `messages.create` ([[Claude-API-Anthropic-Client-SDK#Making Your First Request|example]]). `custom_id` is your own label.
+`params` is exactly what you'd send to `messages.create` ([[Claude-API-Accessing-Claude#Making Your First Request|example]]). `custom_id` is your own label.
 
 
 ## How it runs
@@ -43,7 +43,7 @@ A **message batch** is a set of normal Messages API requests, sent in one call. 
   - If Claude calls a tool, the item stops at `stop_reason: "tool_use"`, and nothing runs the tool.
   - Fine for extraction with a forced `tool_choice`, because the tool call is the answer.
   - Useless for agent work like "grep, run the tests, then fix".
-- **Failures:** resubmit only the failed items, found by `custom_id`, after fixing the cause (e.g. splitting a document that was too big).
+- **Failures:** resubmit only the failed items, found by `custom_id`, after fixing the cause (e.g. [[Claude-API-RAG#Chunking|splitting a document]] that was too big).
 - **Test first:** refine the prompt on a small sample before sending a large batch.
 - **SLA math:** if you submit every 4 hours, a document waits at most 4 hours and processes for at most 24. That's 28 hours, inside a 30-hour SLA.
 
