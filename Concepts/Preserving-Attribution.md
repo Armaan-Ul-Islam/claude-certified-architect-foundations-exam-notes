@@ -34,3 +34,4 @@ confident: false
 ## Related
 - [[Passing-Context-to-Subagents|Synthesis Subagent & Passing Context to Subagents]]
 - [[Task-Decomposition|Decomposition]]
+- [[Claude-API-Features-of-Claude#Citations|Citations (Claude API course)]]: the API returns each claim with the document and location it came from

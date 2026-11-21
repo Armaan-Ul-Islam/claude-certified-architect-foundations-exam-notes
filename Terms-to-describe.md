@@ -1,1 +1,4 @@
 - Prose 
+- [[Claude-API-Features-of-Claude#Extended thinking|Extended thinking]]: Claude reasons in a `thinking` block before its answer
+- [[Claude-API-Features-of-Claude#Signature and redacted thinking|Thinking signature]]: proves the thinking text is Claude's and unchanged
+- [[Claude-API-Features-of-Claude#Signature and redacted thinking|Redacted thinking]]: thinking flagged by safety systems, returned encrypted

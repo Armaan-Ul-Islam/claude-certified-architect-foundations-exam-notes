@@ -11,7 +11,7 @@ aliases:
 **18% of the exam.** A primary domain in [[Scenario-1-Customer-Support|Scenario 1]], [[Scenario-3-Multi-Agent-Research|Scenario 3]], [[Scenario-4-Developer-Productivity|Scenario 4]].
 
 ## 2.1 Design effective tool interfaces with clear descriptions and boundaries
-- *No notes yet.*
+- [[Claude-API-Tool-Use#Tool schemas|Tool schemas (Claude API course)]]: name, description and input_schema
 
 ## 2.2 Implement structured error responses for MCP tools
 - [[Claude-Technologies-Reference#MCP (Model Context Protocol)|MCP: isError and structured error fields (reference)]]

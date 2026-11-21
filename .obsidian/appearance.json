@@ -3,5 +3,6 @@
   "theme": "obsidian",
   "enabledCssSnippets": [
     "study-vault"
-  ]
+  ],
+  "showRibbon": true
 }
