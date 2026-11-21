@@ -15,14 +15,9 @@ aliases:
 ---
 # RAG and Agentic Search
 
-← [[Claude-API-Tool-Use|Tool Use with Claude]] · [[Claude-API-Anthropic-Client-SDK|All chapters]]
+← [[Claude-API-Tool-Use|Tool Use with Claude]] · [[Claude-API-Anthropic-Client-SDK|All chapters]] · [[Claude-API-Features-of-Claude|Features of Claude]] →
 
 Retrieval Augmented Generation (RAG): split a long document into chunks, find the chunks closest to the user's question, and put only those in the prompt.
-
-> [!tip] Exam tip
-> Embedding models and vector database details are out of scope for the exam. Chunking does come up: a document too big for the context window is split before it's resubmitted, for example a failed batch item ([[Message-Batches-API|Message Batches API]], [[Domain-4-Prompt-Engineering#4.5 Design efficient batch processing strategies|Task 4.5]]).
-
-^exam-tip
 
 <br>
 

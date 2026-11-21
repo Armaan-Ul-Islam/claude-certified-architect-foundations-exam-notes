@@ -11,7 +11,7 @@ aliases:
 ---
 # Accessing Claude with the API
 
-[[Claude-API-Anthropic-Client-SDK|All chapters]] · [[Claude-API-Prompt-Evaluation|Prompt Evaluation]] →
+[[Claude-API-Anthropic-Client-SDK|All chapters]] · [[Claude-API-Prompt-Evaluation-and-Engineering|Prompt Evaluation and Engineering]] →
 
 <br>
 
@@ -97,7 +97,7 @@ message = client.messages.create(
 ## Extracting the Response
 ---
 
-`message.content` is a list of [[Claude-Technologies-Reference#Content blocks|content blocks]]. Two ways to get the text:
+`message.content` is a list of [[Claude-Technologies-Reference#Content blocks|content blocks]], and with [[Claude-API-Features-of-Claude#Extended thinking|extended thinking]] the first can be a `thinking` block. Two ways to get the text:
 
 ```python
 message.content[0].text  # By order: breaks if a thinking block comes first

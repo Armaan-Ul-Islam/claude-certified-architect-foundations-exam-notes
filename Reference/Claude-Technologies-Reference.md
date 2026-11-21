@@ -14,7 +14,7 @@ Names, fields and calls from the Claude API, Client SDK, Agent SDK, MCP and Clau
 
 ★ = named in the exam guide. Unmarked = not named, but connected to an exam topic.
 
-**Out of scope, so skip:** streaming / server-sent events, vision, computer use, token counting, pricing and rate limits, authentication, and prompt caching details (just know caching exists).
+**Out of scope, so skip:** streaming / server-sent events, [[Claude-API-Features-of-Claude#Image support|vision]], computer use, token counting, pricing and rate limits, authentication, and prompt caching details (just know caching exists).
 
 <br>
 
@@ -38,6 +38,7 @@ Diagrams of how the Claude API, Client SDK, Agent SDK, Claude Code and MCP serve
 | ★ `tools` | Every tool Claude may call: `name`, `description`, `input_schema`, optional `strict: true` |
 | ★ `tool_choice` | `auto` / `any` / `tool` (forced) / `none`, optional `disable_parallel_tool_use` (see [[Tool-Choice\|Tool Choice]]) |
 | `output_config.format` | Newer way to get schema-matching JSON without a tool. The exam's answer is still tool use + JSON schema |
+| `thinking` | Extended thinking. `claude-opus-5-5` always thinks, takes only `{"type": "adaptive"}` and sets depth with `output_config.effort`. Older models take `{"type": "enabled", "budget_tokens": N}` (see [[Claude-API-Features-of-Claude#Turning it on\|Turning it on]]) |
 
 ### Response fields
 | Field | Meaning |
@@ -53,14 +54,16 @@ Diagrams of how the Claude API, Client SDK, Agent SDK, Claude Code and MCP serve
 | `text` | either side | Plain text |
 | ★ `tool_use` | Claude | A tool request: `id`, `name`, `input` |
 | `tool_result` | you, in a `user` message | `tool_use_id`, `content`, optional `is_error: true` |
-| `document` | you | A PDF or text file to read, e.g. for extraction |
+| `document` | you | A PDF or text file to read, e.g. for extraction (see [[Claude-API-Features-of-Claude#PDF support\|PDF support]] and [[Claude-API-Features-of-Claude#Citations\|citations]]) |
 | `server_tool_use` + `web_search_tool_result` | Anthropic's servers | A server tool call and its result, both inside one response |
+| `thinking` | Claude | Its reasoning before the answer, with a `signature`. Send it back unchanged (see [[Claude-API-Features-of-Claude#Extended thinking\|Extended thinking]]) |
+| `redacted_thinking` | Claude | Reasoning flagged by safety systems, encrypted in `data`. Only there to hand back to Claude (see [[Claude-API-Features-of-Claude#Signature and redacted thinking\|redacted thinking]]) |
 
 ### Server tools
-`web_search`, `web_fetch`, `code_execution`: you only list them in `tools`. Anthropic's servers run them and put the result in the same response, so your code sends no `tool_result`.
+`web_search`, `web_fetch`, `code_execution`: you only list them in `tools`. Anthropic's servers run them and put the result in the same response, so your code sends no `tool_result`. The course's code execution example: [[Claude-API-Features-of-Claude#Code execution|Code execution]].
 
 ### Prompt caching
-`cache_control` marks a prompt prefix (tools → system → messages) for reuse, so resending the same history costs less. For the exam, just know it exists.
+`cache_control` marks a prompt prefix (tools → system → messages) for reuse, so resending the same history costs less. For the exam, just know it exists. The course's rules for it: [[Claude-API-Features-of-Claude#Prompt caching|Prompt caching]].
 
 <br>
 

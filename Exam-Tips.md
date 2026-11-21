@@ -35,9 +35,6 @@ Every exam tip in the vault on one page. Each tip is embedded from its note, so 
 **[[Message-Batches-API|Message Batches API]]**
 ![[Message-Batches-API#^exam-tip]]
 
-**[[Claude-API-RAG|RAG and Agentic Search]]**
-![[Claude-API-RAG#^exam-tip]]
-
 ## Across domains
 
 **[[Agent-SDK-vs-Client-SDK|Agent SDK vs Client SDK]]**

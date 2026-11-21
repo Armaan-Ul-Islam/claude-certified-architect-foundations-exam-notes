@@ -12,7 +12,7 @@ aliases:
 ---
 # Tool Use with Claude
 
-← [[Claude-API-Prompt-Engineering|Prompt Engineering Techniques]] · [[Claude-API-Anthropic-Client-SDK|All chapters]] · [[Claude-API-RAG|RAG and Agentic Search]] →
+← [[Claude-API-Prompt-Evaluation-and-Engineering|Prompt Evaluation and Engineering]] · [[Claude-API-Anthropic-Client-SDK|All chapters]] · [[Claude-API-RAG|RAG and Agentic Search]] →
 
 Claude never runs your tools. It asks for one, your code runs it, and you send the result back ([[Agentic-Loop-Message-Cycle#One tool call, end to end|one tool call, end to end]]). The course splits this into five steps: write a tool function, write its JSON schema, call Claude with the schema, run the tool, then add the result and call Claude again.
 

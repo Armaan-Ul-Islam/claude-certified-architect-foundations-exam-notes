@@ -7,9 +7,14 @@ Obsidian vault of study notes for the Claude Certified Architect – Foundations
 - `Domains/`: the 5 exam domains. Each task statement is a heading listing the notes that cover it.
 - `Scenarios/`: the 6 exam scenarios, plus `Exam-Scenarios.md` on telling them apart.
 - `Reference/`, `Resources/`: technology reference; exam guide, courses and links.
-- `Reference/Claude-API-*.md`: one note per chapter of Anthropic's Building with the Claude API course, listed in the hub `Claude-API-Anthropic-Client-SDK.md`. Each starts with links to the previous chapter, the hub and the next. New course material goes in its chapter's note.
+- `Reference/Claude-API-*.md`: one note per chapter of Anthropic's Building with the Claude API course (prompt evaluation and prompt engineering share one), listed in the hub `Claude-API-Anthropic-Client-SDK.md`. Each starts with links to the previous chapter, the hub and the next. New course material goes in its chapter's note.
 - `assets/`: every image, PDF and HTML diagram, including the official exam guide.
 - `Study-Tracker.base`, `Exam-Map.canvas`, `Exam-Tips.md`: views built from the notes.
+
+## Writing
+- The notes are a refresher to read in minutes before the exam, so keep everything short. A slide carries its own detail: write only what it leaves out.
+- When a slide or the course text is no longer true (a limit, a default, a parameter the current model rejects), add one line under it on what changed ("has moved since the slide: …"), checked in the current docs.
+- End each section with one line on what the exam asks about it, linking its task or scenario, or saying it's out of scope. A likely exam trap also gets an exam tip.
 
 ## Conventions
 - File names use dashes, never spaces.
