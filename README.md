@@ -14,3 +14,4 @@ The vault's settings come with the repo: core plugins, graph colours, bookmarks 
 - GitHub shows `[[links]]`, the `.base` study tracker and the `.canvas` exam map as plain text. Read the vault in Obsidian.
 - The "confident" ticks in the study tracker are saved in the notes, so they are shared through git.
 - Using Claude Code here? It offers to install the Obsidian skills plugin, and `AGENTS.md` describes the vault's conventions.
+- This line was added by Claude through the GitHub Actions workflow to verify the Claude AI workflow works.
