@@ -37,4 +37,5 @@ The **Client SDK** is the library for calling the Claude API, which is what the 
 - [[User-vs-Assistant-Messages|User vs Assistant Messages in Tool Calls]]
 - [[Claude-Technologies-Reference#Client SDK|Client SDK (reference)]]
 - [[Claude-API-Anthropic-Client-SDK|Claude API: Anthropic Client SDK]]: the Client SDK in Python code
+- [[Claude-API-Model-Context-Protocol#Client and server|MCP client and server (Claude API course)]]: with the Client SDK you write the MCP client yourself; the Agent SDK has one built in
 - [[Claude-Technologies-Reference#Agent SDK|Agent SDK (reference)]]

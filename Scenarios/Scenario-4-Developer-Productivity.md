@@ -47,3 +47,4 @@ flowchart LR
 - [[Task-Decomposition|Decomposition]]: dynamic decomposition for a legacy codebase
 - [[Agent-SDK-vs-Client-SDK|Agent SDK vs Client SDK]]: built with the Agent SDK
 - [[Claude-Technologies-Reference#Claude Code configuration|Explore subagent (reference)]]
+- [[Claude-API-Model-Context-Protocol|Model Context Protocol (Claude API course)]]: the Jira, GitHub and DB servers; reuse existing ones, expose catalogs as resources

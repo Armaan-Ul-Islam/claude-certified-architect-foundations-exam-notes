@@ -65,3 +65,4 @@ flowchart LR
 - [[Agent-SDK-vs-Client-SDK|Agent SDK vs Client SDK]]: built with the Agent SDK
 - [[Claude-Technologies-Reference#Hooks|Hooks (reference)]]
 - [[Claude-Technologies-Reference#MCP (Model Context Protocol)|MCP tools and structured errors (reference)]]
+- [[Claude-API-Model-Context-Protocol#Tools|MCP tools (Claude API course)]]: how a server defines a tool and what a raised error sends back

@@ -30,8 +30,9 @@ One note per core chapter, in course order, with prompt evaluation and prompt en
 | [[Claude-API-Tool-Use\|Tool Use with Claude]]                                       | Tool functions and schemas, tool results, multiple tools, stop reason, text editor and web search                                     |
 | [[Claude-API-RAG\|RAG and Agentic Search]]                                          | Chunking, embeddings, vector search, BM25                                                                                             |
 | [[Claude-API-Features-of-Claude\|Features of Claude]]                               | Extended thinking, its signature, redacted thinking, image support, PDF support, citations, prompt caching, Files API, code execution |
+| [[Claude-API-Model-Context-Protocol\|Model Context Protocol]]                       | Why MCP, client and server, then tools, resources and prompts (server side, then client side), the server inspector                   |
 
-Not in the notes yet: Model Context Protocol, Anthropic apps, Agents and workflows.
+Not in the notes yet: MCP prompts in the client, Anthropic apps, Agents and workflows.
 
 <br>
 

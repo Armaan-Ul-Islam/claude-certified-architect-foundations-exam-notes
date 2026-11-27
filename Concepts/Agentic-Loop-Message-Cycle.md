@@ -100,7 +100,7 @@ flowchart TB
 - **Claude API** is the service on Anthropic's servers. Everything else ends up calling it.
 - **Client SDK** is a library that sends those HTTPS calls for you; your code runs the loop and the tools.
 - **Agent SDK** and **Claude Code** share one engine that runs the loop, the built-in tools, hooks and MCP connections for you.
-- **MCP servers** are ordinary programs. Local ones run on your machine (stdio); remote ones run elsewhere (HTTP).
+- **MCP servers** are ordinary programs. Local ones run on your machine (stdio); remote ones run elsewhere (HTTP). How one is built: [[Claude-API-Model-Context-Protocol|Model Context Protocol]].
 - **The model** only reads and writes text. Code (yours, the engine's, an MCP server's or Anthropic's) does every action.
 
 ### One tool call, end to end

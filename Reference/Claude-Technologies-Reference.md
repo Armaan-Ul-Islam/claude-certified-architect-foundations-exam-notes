@@ -226,6 +226,8 @@ See also: [[Scenario-3-Multi-Agent-Research|Scenario 3: Multi-Agent Research Sys
 }
 ```
 
+How a server defines its tools, in the course: [[Claude-API-Model-Context-Protocol|Model Context Protocol]].
+
 <br>
 
 ## Claude Code CLI

@@ -27,6 +27,9 @@ Every exam tip in the vault on one page. Each tip is embedded from its note, so 
 **[[Tool-Choice|Tool Choice]]**
 ![[Tool-Choice#^exam-tip]]
 
+**[[Claude-API-Model-Context-Protocol|Model Context Protocol]]**
+![[Claude-API-Model-Context-Protocol#^exam-tip]]
+
 ## [[Domain-4-Prompt-Engineering|Domain 4: Prompt Engineering & Structured Output]]
 
 **[[JSON-Schema-for-Structured-Extraction|JSON Schema for Structured Extraction]]**

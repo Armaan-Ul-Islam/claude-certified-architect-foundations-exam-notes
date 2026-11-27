@@ -42,7 +42,8 @@ What happens inside the model at each stage, step by step and with interactive d
 Install the SDK and `python-dotenv` (in a notebook cell):
 
 ```python
-%pip install anthropic python-dotenv
+%pip install anthropic
+%pip install python-dotenv
 ```
 
 Put your key in a `.env` file, and keep that file out of git:

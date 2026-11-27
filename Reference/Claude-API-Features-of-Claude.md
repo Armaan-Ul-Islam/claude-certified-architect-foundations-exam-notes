@@ -27,7 +27,7 @@ aliases:
 ---
 # Features of Claude
 
-← [[Claude-API-RAG|RAG and Agentic Search]] · [[Claude-API-Anthropic-Client-SDK|All chapters]]
+← [[Claude-API-RAG|RAG and Agentic Search]] · [[Claude-API-Anthropic-Client-SDK|All chapters]] · [[Claude-API-Model-Context-Protocol|Model Context Protocol]] →
 
 <br>
 

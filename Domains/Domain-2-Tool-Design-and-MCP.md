@@ -15,12 +15,15 @@ aliases:
 
 ## 2.2 Implement structured error responses for MCP tools
 - [[Claude-Technologies-Reference#MCP (Model Context Protocol)|MCP: isError and structured error fields (reference)]]
+- [[Claude-API-Model-Context-Protocol#Defining tools|Defining MCP tools (Claude API course)]]: a raised error comes back with isError but no structure
 
 ## 2.3 Distribute tools appropriately across agents and configure tool choice
 - [[Tool-Choice|Tool Choice]]
 
 ## 2.4 Integrate MCP servers into Claude Code and agent workflows
 - [[Claude-Technologies-Reference#MCP (Model Context Protocol)|MCP servers, .mcp.json and ~/.claude.json (reference)]]
+- [[Claude-API-Model-Context-Protocol#Why MCP|Why MCP (Claude API course)]]: reuse a community server for standard integrations
+- [[Claude-API-Model-Context-Protocol#Defining resources|Defining MCP resources (Claude API course)]]: a content catalog, so fewer exploratory tool calls
 
 ## 2.5 Select and apply built-in tools (Read, Write, Edit, Bash, Grep, Glob) effectively
 - [[Grep]]
